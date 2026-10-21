@@ -1,5 +1,6 @@
 import 'package:clean_arch_bookly_app/core/utils/assets_data.dart';
 import 'package:clean_arch_bookly_app/core/widgets/custom_app_bar.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_listview_item.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -27,6 +28,7 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
+        CustomBookListViewItem(),
       ],
     );
   }
