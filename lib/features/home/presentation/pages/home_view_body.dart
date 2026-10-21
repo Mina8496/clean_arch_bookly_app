@@ -1,6 +1,7 @@
+import 'package:clean_arch_bookly_app/core/utils/appStyles.dart';
 import 'package:clean_arch_bookly_app/core/utils/assets_data.dart';
 import 'package:clean_arch_bookly_app/core/widgets/custom_app_bar.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_listview_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/featured_books_listView_item.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -10,6 +11,7 @@ class HomeViewBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
@@ -28,7 +30,12 @@ class HomeViewBody extends StatelessWidget {
             ],
           ),
         ),
-        CustomBookListViewItem(),
+        FeaturedBooksListViewItem(),
+        SizedBox(height: 50),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 16.0),
+          child: Text('Best Seller', style: Styles.titleMedium),
+        ),
       ],
     );
   }
