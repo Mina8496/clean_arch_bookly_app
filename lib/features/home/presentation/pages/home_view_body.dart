@@ -32,11 +32,44 @@ class HomeViewBody extends StatelessWidget {
         ),
         FeaturedBooksListViewItem(),
         SizedBox(height: 50),
+        // Best Seller
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: Text('Best Seller', style: Styles.titleMedium),
         ),
+        // Best Seller List View
+        BestSellerBooksListView(),
       ],
+    );
+  }
+}
+
+class BestSellerBooksListView extends StatelessWidget {
+  const BestSellerBooksListView({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0),
+      child: Row(
+        children: [
+          SizedBox(
+            height: 150,
+            child: AspectRatio(
+              aspectRatio: 2.7 / 4,
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  image: DecorationImage(
+                    fit: BoxFit.fill,
+                    image: AssetImage(AssetsData.testImage),
+                  ),
+                ),
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

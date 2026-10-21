@@ -31,7 +31,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   }
 
   @override
-  Widget build(BuildContextcontext) {
+  Widget build(BuildContext context) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.stretch,
