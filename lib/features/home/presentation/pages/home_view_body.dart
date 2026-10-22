@@ -1,7 +1,7 @@
 import 'package:clean_arch_bookly_app/core/utils/styles.dart';
 import 'package:clean_arch_bookly_app/core/utils/assets_data.dart';
 import 'package:clean_arch_bookly_app/core/widgets/custom_app_bar.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/best_seller_books_listView.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/best_seller_listview.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/featured_books_listView_item.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -11,36 +11,42 @@ class HomeViewBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: CustomAppBar(
-            showBackButton: false,
-            actions: [
-              Image.asset(AssetsData.logo, height: 18),
-              const Spacer(),
-              IconButton(
-                onPressed: () {},
-                icon: const FaIcon(
-                  FontAwesomeIcons.magnifyingGlass,
-                  color: Colors.white,
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                child: CustomAppBar(
+                  showBackButton: false,
+                  actions: [
+                    Image.asset(AssetsData.logo, height: 18),
+                    const Spacer(),
+                    IconButton(
+                      onPressed: () {},
+                      icon: const FaIcon(
+                        FontAwesomeIcons.magnifyingGlass,
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
                 ),
               ),
+              FeaturedBooksListViewItem(),
+              SizedBox(height: 50),
+              // Best Seller
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: Text('Best Seller', style: Styles.textStyle18),
+              ),
+              SizedBox(height: 20),
+              // Best Seller List View
             ],
           ),
         ),
-        FeaturedBooksListViewItem(),
-        SizedBox(height: 50),
-        // Best Seller
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: Text('Best Seller', style: Styles.textStyle18),
-        ),
-        SizedBox(height: 20),
-        // Best Seller List View
-        BestSellerBooksItem(),
+        SliverFillRemaining(child: BestSellerListView()),
       ],
     );
   }
