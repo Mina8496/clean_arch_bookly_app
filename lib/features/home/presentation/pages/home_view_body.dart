@@ -40,10 +40,8 @@ class HomeViewBody extends StatelessWidget {
         ),
         SizedBox(height: 20),
         // Best Seller List View
-        BestSellerBooksListView(),
+        BestSellerBooksItem(),
       ],
     );
   }
 }
-
-

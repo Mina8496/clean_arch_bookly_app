@@ -4,8 +4,8 @@ import 'package:clean_arch_bookly_app/core/utils/styles.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 
-class BestSellerBooksListView extends StatelessWidget {
-  const BestSellerBooksListView({super.key});
+class BestSellerBooksItem extends StatelessWidget {
+  const BestSellerBooksItem({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -66,4 +66,3 @@ class BestSellerBooksListView extends StatelessWidget {
     );
   }
 }
-
