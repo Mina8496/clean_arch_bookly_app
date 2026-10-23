@@ -1,18 +1,17 @@
-import 'package:clean_arch_bookly_app/constants.dart';
+import 'package:clean_arch_bookly_app/core/utils/app_router.dart';
 import 'package:clean_arch_bookly_app/core/utils/assets_data.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/home_page.dart';
 import 'package:clean_arch_bookly_app/features/splash/presentation/pages/widgets/sliding_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
+import 'package:go_router/go_router.dart';
 
-class SplashViewBody extends StatefulWidget {
-  const SplashViewBody({super.key});
+class SplashPageBody extends StatefulWidget {
+  const SplashPageBody({super.key});
 
   @override
-  State<SplashViewBody> createState() => _SplashViewBodyState();
+  State<SplashPageBody> createState() => _SplashPageBodyState();
 }
 
-class _SplashViewBodyState extends State<SplashViewBody>
+class _SplashPageBodyState extends State<SplashPageBody>
     with SingleTickerProviderStateMixin {
   late AnimationController animationController;
   late Animation<Offset> slidingAnimation;
@@ -57,11 +56,8 @@ class _SplashViewBodyState extends State<SplashViewBody>
 
   void navigateToHome() {
     Future.delayed(Duration(seconds: 2), () {
-      Get.to(
-        () => const HomePage(),
-        transition: Transition.fade,
-        duration: kTranstionDuration,
-      );
+      if (!mounted) return;
+      GoRouter.of(context).push(AppRouter.khomePage);
     });
   }
 }
