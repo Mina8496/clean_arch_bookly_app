@@ -1,9 +1,5 @@
-import 'package:clean_arch_bookly_app/core/utils/styles.dart';
-import 'package:clean_arch_bookly_app/core/widgets/custom_app_bar.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/book_action.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/book_rating.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_item.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/similer_books_listview.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/book_details_section.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/similar_books_seaction.dart';
 import 'package:flutter/material.dart';
 
 class BookDeatilesPageBody extends StatelessWidget {
@@ -11,62 +7,19 @@ class BookDeatilesPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    return Column(
-      children: [
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: CustomAppBar(
-            leading: IconButton(onPressed: () {}, icon: Icon(Icons.close)),
-            actions: [
-              IconButton(
-                onPressed: () {},
-                icon: Icon(Icons.shopping_cart_outlined),
-              ),
+    return CustomScrollView(
+      slivers: [
+        SliverFillRemaining(
+          hasScrollBody: false,
+          child: Column(
+            children: [
+              BookDetailsSection(),
+              Expanded(child: SizedBox(height: 50)),
+              SimilarBooksSeaction(),
+              SizedBox(height: 40),
             ],
           ),
         ),
-        Padding(
-          padding: EdgeInsets.symmetric(horizontal: width * .25),
-          child: CustomBookItem(),
-        ),
-        SizedBox(height: 43),
-        Text(
-          'The Junger Book',
-          style: Styles.textStyle30.copyWith(
-            color: Colors.white,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        SizedBox(height: 6),
-        Text(
-          'Rudyard Kipling',
-          style: Styles.textStyle18.copyWith(
-            fontStyle: FontStyle.italic,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        SizedBox(height: 18),
-        BookRating(mainAxisAlignment: MainAxisAlignment.center),
-        SizedBox(height: 18),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: BookAction(),
-        ),
-        SizedBox(height: 50),
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 26.0),
-          child: Align(
-            alignment: Alignment.bottomLeft,
-            child: Text(
-              'You Can also like',
-              style: Styles.textStyle16.copyWith(fontWeight: FontWeight.w600),
-            ),
-          ),
-        ),
-        SizedBox(height: 16),
-        SimilerBooksListView(),
-        SizedBox(height: 40),
       ],
     );
   }
