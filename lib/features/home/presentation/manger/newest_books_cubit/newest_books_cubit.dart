@@ -7,9 +7,9 @@ class NewestBooksCubit extends Cubit<NewestBooksState> {
     : super(NewestBooksInitialState());
 
   final FetchNewestBooksUseCase fetchNewestBooksUseCase;
-  Future<void> fetchNewestBooks() async {
+  Future<void> fetchNewestBooks({int pageNumber = 0}) async {
     emit(NewestBooksLoadingState());
-    var result = await fetchNewestBooksUseCase.call();
+    var result = await fetchNewestBooksUseCase.call(param: pageNumber);
 
     result.fold(
       (failure) {
