@@ -25,11 +25,14 @@ class HomeRepoImpl extends HomeRepo {
       books = await homeRemoteDataSources.fetchFeaturedBooks();
       return right(books);
     } catch (e) {
+      print('REPO ERROR: $e');
       if (e is DioException) {
+        print('STATUS: ${e.response?.statusCode}');
+        print('BODY: ${e.response?.data}');
         return left(ServerFailure.fromDiorError(e));
       }
       return left(ServerFailure(e.toString()));
-      }
+    }
   }
 
   @override
@@ -43,7 +46,10 @@ class HomeRepoImpl extends HomeRepo {
       books = await homeRemoteDataSources.fetchNewestBooks();
       return right(books);
     } catch (e) {
+      print('REPO ERROR: $e');
       if (e is DioException) {
+        print('STATUS: ${e.response?.statusCode}');
+        print('BODY: ${e.response?.data}');
         return left(ServerFailure.fromDiorError(e));
       }
       return left(ServerFailure(e.toString()));

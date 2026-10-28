@@ -1,7 +1,8 @@
 import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:hive/hive.dart';
 
+/// Saves [books] to the Hive box identified by [boxName].
 void saveBooksData(List<BookEntity> books, String boxName) {
-    var box = Hive.box(boxName);
-    box.addAll(books);
-  }
+  var box = Hive.box<BookEntity>(boxName);
+  box.addAll(books);
+}
