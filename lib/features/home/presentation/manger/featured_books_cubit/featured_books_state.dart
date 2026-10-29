@@ -8,14 +8,8 @@ class FeaturedBooksLoadingState extends FeaturedBooksState {}
 
 class FeaturedBooksSuccessState extends FeaturedBooksState {
   final List<BookEntity> books;
-  final bool isLoadingMore;
-  final String? loadMoreErrorMessage;
 
-  FeaturedBooksSuccessState({
-    required this.books,
-    this.isLoadingMore = false,
-    this.loadMoreErrorMessage,
-  });
+  FeaturedBooksSuccessState({required this.books});
 }
 
 class FeaturedBooksFailureState extends FeaturedBooksState {
