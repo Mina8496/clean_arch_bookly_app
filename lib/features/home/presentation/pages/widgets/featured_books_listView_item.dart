@@ -1,21 +1,59 @@
-import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_iamge.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FeaturedBooksListViewItem extends StatelessWidget {
+import '../../../domain/entities/book_entity.dart';
+
+class FeaturedBooksListViewItem extends StatefulWidget {
   const FeaturedBooksListViewItem({super.key, required this.books});
+
   final List<BookEntity> books;
+
+  @override
+  State<StatefulWidget> createState() => _FeaturedBooksListViewItemState();
+}
+
+class _FeaturedBooksListViewItemState extends State<FeaturedBooksListViewItem> {
+  late final ScrollController _scrollController;
+  var nextPage = 1;
+  @override
+  void initState() {
+    super.initState();
+    _scrollController = ScrollController();
+    _scrollController.addListener(_scrollListener);
+  }
+
+  void _scrollListener() {
+    var currentPositions = _scrollController.position.pixels;
+    var maxScrollLength = _scrollController.position.maxScrollExtent;
+    if (currentPositions >= 0.7 * maxScrollLength) {
+      BlocProvider.of<FeaturedBooksCubit>(
+        context,
+      ).fetchFeaturedBooks(pageNumber: nextPage++);
+    }
+  }
+
+  @override
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: MediaQuery.of(context).size.height * 0.3,
+      height: MediaQuery.of(context).size.height * .3,
       child: ListView.builder(
+        controller: _scrollController,
+        itemCount: widget.books.length,
         scrollDirection: Axis.horizontal,
-        itemCount: books.length,
-        itemBuilder: (context, index) => Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          child: CustomBookItem(image: books[index].image ?? ''),
-        ),
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8),
+            child: CustomBookImage(image: widget.books[index].image ?? ''),
+          );
+        },
       ),
     );
   }

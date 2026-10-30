@@ -2,7 +2,7 @@ import 'package:clean_arch_bookly_app/core/utils/styles.dart';
 import 'package:clean_arch_bookly_app/core/widgets/custom_app_bar.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/book_action.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/book_rating.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_iamge.dart';
 import 'package:flutter/material.dart';
 
 class BookDetailsSection extends StatelessWidget {
@@ -27,7 +27,7 @@ class BookDetailsSection extends StatelessWidget {
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: width * .25),
-          child: CustomBookItem(image: '',),
+          child: CustomBookImage(image: ''),
         ),
         SizedBox(height: 43),
         Text(

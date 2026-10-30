@@ -1,4 +1,4 @@
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/custom_book_iamge.dart';
 import 'package:flutter/material.dart';
 
 class SimilerBooksListView extends StatelessWidget {
@@ -11,7 +11,7 @@ class SimilerBooksListView extends StatelessWidget {
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 5.0),
-          child: CustomBookItem(image: ''),
+          child: CustomBookImage(image: ''),
         ),
       ),
     );
