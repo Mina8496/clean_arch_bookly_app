@@ -12,8 +12,6 @@ Bookly is a Flutter app for browsing books from the Google Books API. It uses a 
 - Cache fetched books locally with Hive and use cached data when available.
 - Navigate between screens with GoRouter.
 
-> **Current search behavior:** The Search screen has a search field and displays books, but filtering by the entered query is not implemented yet.
-
 ## Screens
 
 1. **Home** — Displays book collections and provides access to Search.
