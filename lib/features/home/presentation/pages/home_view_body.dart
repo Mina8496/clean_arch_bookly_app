@@ -3,7 +3,7 @@ import 'package:clean_arch_bookly_app/core/utils/styles.dart';
 import 'package:clean_arch_bookly_app/core/utils/assets_data.dart';
 import 'package:clean_arch_bookly_app/core/widgets/custom_app_bar.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/best_seller_listview_bloc_builder.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/featued_books_bloc_builder.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/featued_books_bloc_consumer.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:go_router/go_router.dart';
@@ -38,7 +38,7 @@ class HomeViewBody extends StatelessWidget {
                   ],
                 ),
               ),
-              FeatuedBooksListViewBlocBuilder(),
+              FeatuedBooksListViewBlocConsumer(),
               SizedBox(height: 50),
               // Best Seller
               Padding(

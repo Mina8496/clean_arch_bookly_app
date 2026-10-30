@@ -1,3 +1,4 @@
+import 'package:clean_arch_bookly_app/core/widgets/app_snackbar.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/manger/featured_books_cubit/featured_books_state.dart';
@@ -5,16 +6,16 @@ import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/f
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class FeatuedBooksListViewBlocBuilder extends StatefulWidget {
-  const FeatuedBooksListViewBlocBuilder({super.key});
+class FeatuedBooksListViewBlocConsumer extends StatefulWidget {
+  const FeatuedBooksListViewBlocConsumer({super.key});
 
   @override
-  State<FeatuedBooksListViewBlocBuilder> createState() =>
-      _FeatuedBooksListViewBlocBuilderState();
+  State<FeatuedBooksListViewBlocConsumer> createState() =>
+      _FeatuedBooksListViewBlocConsumerState();
 }
 
-class _FeatuedBooksListViewBlocBuilderState
-    extends State<FeatuedBooksListViewBlocBuilder> {
+class _FeatuedBooksListViewBlocConsumerState
+    extends State<FeatuedBooksListViewBlocConsumer> {
   List<BookEntity> books = [];
   @override
   Widget build(BuildContext context) {
@@ -23,13 +24,15 @@ class _FeatuedBooksListViewBlocBuilderState
         if (state is FeaturedBooksSuccessState) {
           books.addAll(state.books);
         }
+        if (state is FeaturedBooksPaginationFailureState) {
+          AppSnackBar.info(context, state.errorMessage);
+        }
       },
       builder: (context, state) {
         if (state is FeaturedBooksSuccessState ||
-            state is FeaturedBooksPaginationLoadingState) {
-          return FeaturedBooksListViewItem(
-            books: books,
-          );
+            state is FeaturedBooksPaginationLoadingState ||
+            state is FeaturedBooksPaginationFailureState) {
+          return FeaturedBooksListViewItem(books: books);
         } else if (state is FeaturedBooksFailureState) {
           return Text(state.errorMessage);
         } else {
