@@ -24,8 +24,6 @@ The **Splash** screen is the app's animated entry screen; it navigates to Home a
 
 ## Screenshots
 
-Add the app screenshots to the `screenshots/` folder using these filenames:
-
 | Splash | Home | Search | Book Details |
 |---|---|---|---|
 | ![Splash screen](screenshots/splash.png) | ![Home screen](screenshots/home.png) | ![Search screen](screenshots/search.png) | ![Book Details screen](screenshots/book-details.png) |
