@@ -28,7 +28,7 @@ class HomeViewBody extends StatelessWidget {
                     const Spacer(),
                     IconButton(
                       onPressed: () {
-                        GoRouter.of(context).push(AppRouter.kSearchPage);
+                        GoRouter.of(context).push(AppRouter.kSearchPage,);
                       },
                       icon: const FaIcon(
                         FontAwesomeIcons.magnifyingGlass,
