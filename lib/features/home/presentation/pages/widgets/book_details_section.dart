@@ -33,8 +33,10 @@ class BookDetailsSection extends StatelessWidget {
         ),
         SizedBox(height: 43),
         Text(
+          textAlign: TextAlign.center,
           book.title,
-          style: Styles.textStyle30.copyWith(
+          maxLines: 2,
+          style: Styles.textStyle20.copyWith(
             color: Colors.white,
             fontWeight: FontWeight.bold,
           ),

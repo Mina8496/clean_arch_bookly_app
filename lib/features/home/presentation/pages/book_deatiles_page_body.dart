@@ -16,7 +16,7 @@ class BookDeatilesPageBody extends StatelessWidget {
             children: [
               BookDetailsSection(book: book),
               Expanded(child: SizedBox(height: 50)),
-              SimilarBooksSeaction(),
+              SimilarBooksSeaction(book: book),
               SizedBox(height: 40),
             ],
           ),
