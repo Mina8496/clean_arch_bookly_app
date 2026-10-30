@@ -6,6 +6,8 @@ class FeaturedBooksInitialState extends FeaturedBooksState {}
 
 class FeaturedBooksLoadingState extends FeaturedBooksState {}
 
+class FeaturedBooksPaginationLoadingState extends FeaturedBooksState {}
+
 class FeaturedBooksSuccessState extends FeaturedBooksState {
   final List<BookEntity> books;
 
