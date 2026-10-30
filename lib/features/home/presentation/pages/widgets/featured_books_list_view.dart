@@ -5,16 +5,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../domain/entities/book_entity.dart';
 
-class FeaturedBooksListViewItem extends StatefulWidget {
-  const FeaturedBooksListViewItem({super.key, required this.books});
+class FeaturedBooksListView extends StatefulWidget {
+  const FeaturedBooksListView({super.key, required this.books});
 
   final List<BookEntity> books;
 
   @override
-  State<StatefulWidget> createState() => _FeaturedBooksListViewItemState();
+  State<StatefulWidget> createState() => _FeaturedBooksListViewState();
 }
 
-class _FeaturedBooksListViewItemState extends State<FeaturedBooksListViewItem> {
+class _FeaturedBooksListViewState extends State<FeaturedBooksListView> {
   late final ScrollController _scrollController;
   var nextPage = 1;
 

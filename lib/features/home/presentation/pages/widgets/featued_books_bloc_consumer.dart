@@ -2,7 +2,8 @@ import 'package:clean_arch_bookly_app/core/widgets/app_snackbar.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/manger/featured_books_cubit/featured_books_cubit.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/manger/featured_books_cubit/featured_books_state.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/featured_books_listView_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/featured_books_list_view.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/featured_books_list_view_loading_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -32,11 +33,11 @@ class _FeatuedBooksListViewBlocConsumerState
         if (state is FeaturedBooksSuccessState ||
             state is FeaturedBooksPaginationLoadingState ||
             state is FeaturedBooksPaginationFailureState) {
-          return FeaturedBooksListViewItem(books: books);
+          return FeaturedBooksListView(books: books);
         } else if (state is FeaturedBooksFailureState) {
           return Text(state.errorMessage);
         } else {
-          return const CircularProgressIndicator();
+          return FeaturedBooksListViewLoadingIndicator();
         }
       },
     );
