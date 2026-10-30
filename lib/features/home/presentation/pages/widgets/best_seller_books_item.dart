@@ -2,17 +2,19 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:clean_arch_bookly_app/constants.dart';
 import 'package:clean_arch_bookly_app/core/utils/app_router.dart';
 import 'package:clean_arch_bookly_app/core/utils/styles.dart';
+import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/pages/widgets/book_rating.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class BestSellerBooksItem extends StatelessWidget {
-  const BestSellerBooksItem({super.key, required this.image});
-  final String image;
+  const BestSellerBooksItem({super.key, required this.book});
+  final BookEntity book;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => GoRouter.of(context).push(AppRouter.kBookDeatilesPage),
+      onTap: () => GoRouter.of(context).push(AppRouter.kBookDeatilesPage, extra: book),
+
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 30.0),
         child: Row(
@@ -23,7 +25,7 @@ class BestSellerBooksItem extends StatelessWidget {
                 aspectRatio: 2.7 / 4,
                 child: ClipRRect(
                   borderRadius: BorderRadiusGeometry.circular(16),
-                  child: CachedNetworkImage(imageUrl: image, fit: BoxFit.fill),
+                  child: CachedNetworkImage(imageUrl: book.image ?? '', fit: BoxFit.fill),
                 ),
               ),
             ),
@@ -35,7 +37,7 @@ class BestSellerBooksItem extends StatelessWidget {
                   SizedBox(
                     width: MediaQuery.of(context).size.width * 0.5,
                     child: Text(
-                      'Harry Potter and the Goblet of Fire',
+                      book.title,
                       maxLines: 2,
                       style: Styles.textStyle20.copyWith(
                         fontFamily: kGtSectraFine,
@@ -43,7 +45,7 @@ class BestSellerBooksItem extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 3),
-                  Text('J.k. Rowling', style: Styles.textStyle14),
+                  Text(book.authorName ?? 'No Name', style: Styles.textStyle14),
                   SizedBox(height: 3),
                   Row(
                     children: [

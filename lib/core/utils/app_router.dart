@@ -1,3 +1,4 @@
+import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/pages/book_deatiles_page.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/pages/home_page.dart';
 import 'package:clean_arch_bookly_app/features/search/presentation/pages/search_page.dart';
@@ -14,7 +15,10 @@ abstract class AppRouter {
       GoRoute(path: khomePage, builder: (context, state) => HomePage()),
       GoRoute(
         path: kBookDeatilesPage,
-        builder: (context, state) => BookDeatilesPage(),
+        builder: (context, state) {
+          final book = state.extra as BookEntity;
+          return BookDeatilesPage(book: book);
+        },
       ),
       GoRoute(path: kSearchPage, builder: (context, state) => SearchPage()),
     ],
